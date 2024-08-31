@@ -8,12 +8,20 @@ import { AppService } from './app.service';
 import { LoggerMiddleware } from '../middleware/logger.middleware';
 import { CustomAppService } from './custom-app.service';
 import { getConfigAsync } from '../utils/index';
+import { DatabaseModule } from '../dynamic/database.module';
 
 /*
  * @Module() 装饰器定义了模块，它会将控制器和服务组合起来。
  */
 @Module({
-  imports: [],
+  /*
+   * 这里使用动态模块，详见：https://docs.nestjs.com/fundamentals/dynamic-modules
+   */
+  imports: [
+    DatabaseModule.forRoot({
+      type: process.env.DB_TYPE === 'mysql' ? 'mysql' : 'mongodb', // 动态选择数据库类型
+    }),
+  ],
   /*
    * https://docs.nestjs.com/controllers
    * 控制器负责处理传入请求并向客户端返回响应。
@@ -37,7 +45,7 @@ import { getConfigAsync } from '../utils/index';
     {
       provide: 'ASYNC_CONFIG',
       useFactory: async () => {
-        // 异步操作
+        // Async Provider
         return await getConfigAsync();
       },
     },
