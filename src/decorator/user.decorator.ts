@@ -10,7 +10,7 @@ import { createParamDecorator, ExecutionContext } from '@nestjs/common';
  * 在这个例子中，User 装饰器从请求的 headers 中提取 user 字段并将其返回。
  */
 export const User = createParamDecorator(
-  (data: unknown, ctx: ExecutionContext) => {
+  (_data: unknown, ctx: ExecutionContext) => {
     const request = ctx.switchToHttp().getRequest();
     return request.headers['user']; // 从请求头中获取 'user' 字段
   },
