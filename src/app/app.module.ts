@@ -38,7 +38,7 @@ import { getConfigAsync } from '../utils/index';
       provide: 'ASYNC_CONFIG',
       useFactory: async () => {
         // 异步操作
-        return await getConfigAsync()
+        return await getConfigAsync();
       },
     },
     {
