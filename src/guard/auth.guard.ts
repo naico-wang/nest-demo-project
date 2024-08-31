@@ -1,5 +1,5 @@
 /*
-* 守卫用于确定给定请求是否可以由路由处理，它们通常用于认证。
+ * 守卫用于确定给定请求是否可以由路由处理，它们通常用于认证。
  */
 import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import { Observable } from 'rxjs';

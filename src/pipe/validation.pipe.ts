@@ -1,7 +1,12 @@
 /*
-* 管道用于转换和验证客户端传入的数据。
+ * 管道用于转换和验证客户端传入的数据。
  */
-import { PipeTransform, Injectable, ArgumentMetadata, BadRequestException } from '@nestjs/common';
+import {
+  PipeTransform,
+  Injectable,
+  ArgumentMetadata,
+  BadRequestException,
+} from '@nestjs/common';
 
 @Injectable()
 export class ValidationPipe implements PipeTransform {

@@ -1,7 +1,7 @@
 /*
-* 模块是 NestJS 应用的基本组成部分。
-* 每个应用至少有一个模块，即根模块（AppModule）。
-*/
+ * 模块是 NestJS 应用的基本组成部分。
+ * 每个应用至少有一个模块，即根模块（AppModule）。
+ */
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -17,10 +17,9 @@ import { LoggerMiddleware } from '../middleware/logger.middleware';
 })
 export class AppModule implements NestModule {
   /*
-  * 在模块中使用中间件
+   * 在模块中使用中间件
    */
   configure(consumer: MiddlewareConsumer): any {
-    consumer.apply(LoggerMiddleware)
-      .forRoutes('app')
+    consumer.apply(LoggerMiddleware).forRoutes('app');
   }
 }
