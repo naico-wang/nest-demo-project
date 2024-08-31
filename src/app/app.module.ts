@@ -7,6 +7,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { LoggerMiddleware } from '../middleware/logger.middleware';
 import { CustomAppService } from './custom-app.service';
+import { getConfigAsync } from '../utils/index';
 
 /*
  * @Module() 装饰器定义了模块，它会将控制器和服务组合起来。
@@ -37,7 +38,7 @@ import { CustomAppService } from './custom-app.service';
       provide: 'ASYNC_CONFIG',
       useFactory: async () => {
         // 异步操作
-        return await getConfigAsync();
+        return await getConfigAsync()
       },
     },
     {
